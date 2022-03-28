@@ -1,17 +1,17 @@
 package com.example.jpamanytomany.entities;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
+@NoArgsConstructor
 @Getter
 @Entity
 public class Project {
@@ -28,12 +28,13 @@ public class Project {
         this.title = title;
     }
 
-    public Project() {
-
-    }
-
-    public void addEmployee(Employee employee){
+    public void addEmployee(Employee employee) {
         employees.add(employee);
         employee.getProjects().add(this);
+    }
+
+    public void removeEmployee(Employee employee) {
+        employees.remove(employee);
+        employee.getProjects().remove(this);
     }
 }

@@ -51,6 +51,8 @@ public class JpaManytomanyApplication {
             basarab.addProject(project1);
 
             neagoe.addProject(project);
+            neagoe.addProject(project2);
+            neagoe.removeProject(project2);
 
             repository.saveAll(Arrays.asList(basarab, neagoe));
         };
